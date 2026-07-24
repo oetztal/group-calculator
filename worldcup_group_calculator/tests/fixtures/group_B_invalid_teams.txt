@@ -1,0 +1,3 @@
+Mexico	Haiti	4:3
+Mexico	Brazil	1:2
+Haiti	Brazil	1:4

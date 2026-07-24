@@ -1,0 +1,6 @@
+Argentina	Nigeria	2:1
+Argentina	Iceland	1:1
+Argentina	Croatia	0:3
+Nigeria	Iceland	2:0
+Nigeria	Croatia	0:2
+Iceland	Croatia	1:2
