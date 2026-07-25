@@ -1,12 +1,8 @@
 """Tests for parser module."""
 
 import pytest
-from pathlib import Path
-import tempfile
-import os
 
 from group_calculator.parser import parse_file, parse_score
-from group_calculator.models import Match
 
 
 class TestParseFile:
@@ -15,10 +11,10 @@ class TestParseFile:
     def test_parse_valid_file(self, valid_group_file):
         """Test parsing a valid group file."""
         matches, errors = parse_file(str(valid_group_file))
-        
+
         assert len(errors) == 0
         assert len(matches) == 6
-        
+
         # Check first match
         assert matches[0].team_a == "Mexico"
         assert matches[0].team_b == "Haiti"
@@ -28,7 +24,7 @@ class TestParseFile:
     def test_parse_file_not_found(self):
         """Test parsing non-existent file."""
         matches, errors = parse_file("/nonexistent/path/group_X.txt")
-        
+
         assert len(matches) == 0
         assert len(errors) == 1
         assert "File not found" in errors[0]
@@ -38,9 +34,9 @@ class TestParseFile:
         content = "Costa Rica\tUnited States\t2:1\n"
         file_path = tmp_path / "group.txt"
         file_path.write_text(content)
-        
+
         matches, errors = parse_file(str(file_path))
-        
+
         assert len(errors) == 0
         assert len(matches) == 1
         assert matches[0].team_a == "Costa Rica"
@@ -51,9 +47,9 @@ class TestParseFile:
         content = "Mexico\tHaiti\t4:3\n\nBrazil\tSweden\t1:1\n\n"
         file_path = tmp_path / "group.txt"
         file_path.write_text(content)
-        
+
         matches, errors = parse_file(str(file_path))
-        
+
         assert len(errors) == 0
         assert len(matches) == 2
 
@@ -62,9 +58,9 @@ class TestParseFile:
         content = "# This is a comment\nMexico\tHaiti\t4:3\n# Another comment\nBrazil\tSweden\t1:1\n"
         file_path = tmp_path / "group.txt"
         file_path.write_text(content)
-        
+
         matches, errors = parse_file(str(file_path))
-        
+
         assert len(errors) == 0
         assert len(matches) == 2
 
@@ -73,9 +69,9 @@ class TestParseFile:
         content = "Mexico\tHaiti\n"  # Missing score
         file_path = tmp_path / "group.txt"
         file_path.write_text(content)
-        
+
         matches, errors = parse_file(str(file_path))
-        
+
         assert len(matches) == 0
         assert len(errors) == 1
         assert "Expected 3 tab-separated values" in errors[0]
@@ -85,9 +81,9 @@ class TestParseFile:
         content = "Mexico\tHaiti\t4:3\tExtra\n"
         file_path = tmp_path / "group.txt"
         file_path.write_text(content)
-        
+
         matches, errors = parse_file(str(file_path))
-        
+
         assert len(matches) == 0
         assert len(errors) == 1
         assert "Expected 3 tab-separated values" in errors[0]
@@ -97,25 +93,21 @@ class TestParseFile:
         content = "Mexico\tHaiti\t4-3\n"  # Uses hyphen instead of colon
         file_path = tmp_path / "group.txt"
         file_path.write_text(content)
-        
+
         matches, errors = parse_file(str(file_path))
-        
+
         assert len(matches) == 0
         assert len(errors) == 1
         assert "Invalid score format" in errors[0]
 
     def test_parse_multiple_errors(self, tmp_path):
         """Test that multiple errors are collected."""
-        content = (
-            "Mexico\tHaiti\t4:3\n"
-            "Invalid line\n"
-            "Brazil\tSweden\tinvalid\n"
-        )
+        content = "Mexico\tHaiti\t4:3\nInvalid line\nBrazil\tSweden\tinvalid\n"
         file_path = tmp_path / "group.txt"
         file_path.write_text(content)
-        
+
         matches, errors = parse_file(str(file_path))
-        
+
         assert len(matches) == 1  # Only valid first line
         assert len(errors) == 2
 

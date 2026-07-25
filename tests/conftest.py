@@ -1,8 +1,8 @@
 """Pytest configuration and fixtures for Group Calculator."""
 
-import os
-import pytest
 from pathlib import Path
+
+import pytest
 
 # Root directory of the project
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -36,11 +36,7 @@ def valid_group_file(tmp_path):
 @pytest.fixture
 def group_file_with_3_teams(tmp_path):
     """Create a group file with only 3 teams."""
-    content = (
-        "Mexico\tHaiti\t4:3\n"
-        "Mexico\tBrazil\t1:2\n"
-        "Haiti\tBrazil\t1:4\n"
-    )
+    content = "Mexico\tHaiti\t4:3\nMexico\tBrazil\t1:2\nHaiti\tBrazil\t1:4\n"
     file_path = tmp_path / "group_B.txt"
     file_path.write_text(content)
     return file_path

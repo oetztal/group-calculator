@@ -1,9 +1,7 @@
 """Tests for validator module."""
 
-import pytest
-
 from group_calculator.models import Match
-from group_calculator.validator import validate_group, get_expected_pairs
+from group_calculator.validator import get_expected_pairs, validate_group
 
 
 class TestValidateGroup:
@@ -19,9 +17,9 @@ class TestValidateGroup:
             Match("Haiti", "Sweden", 2, 1),
             Match("Brazil", "Sweden", 3, 3),
         ]
-        
+
         is_valid, errors = validate_group(matches)
-        
+
         assert is_valid is True
         assert len(errors) == 0
 
@@ -32,9 +30,9 @@ class TestValidateGroup:
             Match("Mexico", "Brazil", 1, 2),
             Match("Haiti", "Brazil", 1, 4),
         ]
-        
+
         is_valid, errors = validate_group(matches)
-        
+
         assert is_valid is False
         assert len(errors) == 1
         assert "Expected 4 teams, found 3" in errors[0]
@@ -48,9 +46,9 @@ class TestValidateGroup:
             Match("A", "E", 1, 0),
             Match("B", "C", 1, 0),
         ]
-        
+
         is_valid, errors = validate_group(matches)
-        
+
         assert is_valid is False
         assert any("Expected 4 teams, found 5" in e for e in errors)
 
@@ -64,9 +62,9 @@ class TestValidateGroup:
             Match("Haiti", "Sweden", 2, 1),
             Match("Mexico", "Mexico", 5, 0),  # Self match
         ]
-        
+
         is_valid, errors = validate_group(matches)
-        
+
         assert is_valid is False
         assert any("cannot play itself" in e for e in errors)
 
@@ -80,9 +78,9 @@ class TestValidateGroup:
             Match("Haiti", "Sweden", 2, 1),
             Match("Mexico", "Haiti", 2, 1),  # Duplicate of first
         ]
-        
+
         is_valid, errors = validate_group(matches)
-        
+
         assert is_valid is False
         assert any("Duplicate match" in e for e in errors)
 
@@ -95,9 +93,9 @@ class TestValidateGroup:
             Match("Haiti", "Brazil", 1, 4),
             # Missing: Haiti vs Sweden, Brazil vs Sweden
         ]
-        
+
         is_valid, errors = validate_group(matches)
-        
+
         assert is_valid is False
         assert any("Missing matches" in e for e in errors)
 
@@ -108,9 +106,9 @@ class TestValidateGroup:
             Match("A", "C", 1, 0),
             # Only 3 teams, missing matches, duplicate would need more
         ]
-        
+
         is_valid, errors = validate_group(matches)
-        
+
         assert is_valid is False
         assert len(errors) >= 1  # At least team count error
 
@@ -122,7 +120,7 @@ class TestGetExpectedPairs:
         """Test getting expected pairs for 4 teams."""
         teams = {"A", "B", "C", "D"}
         expected = get_expected_pairs(teams)
-        
+
         assert len(expected) == 6
         assert ("A", "B") in expected
         assert ("A", "C") in expected
@@ -135,7 +133,7 @@ class TestGetExpectedPairs:
         """Test getting expected pairs for 3 teams."""
         teams = {"A", "B", "C"}
         expected = get_expected_pairs(teams)
-        
+
         assert len(expected) == 3
         assert ("A", "B") in expected
         assert ("A", "C") in expected

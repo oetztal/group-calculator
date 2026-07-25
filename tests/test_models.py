@@ -65,7 +65,7 @@ class TestTeamStats:
             losses=0,
             points=7,
             goals_for=6,
-            goals_against=3
+            goals_against=3,
         )
         assert stats.matches == 3
         assert stats.wins == 2
@@ -80,7 +80,7 @@ class TestTeamStats:
         """Test updating stats for a win."""
         stats = TeamStats(name="Mexico")
         stats.update(goals_scored=2, goals_conceded=1, result="win")
-        
+
         assert stats.matches == 1
         assert stats.wins == 1
         assert stats.draws == 0
@@ -94,7 +94,7 @@ class TestTeamStats:
         """Test updating stats for a draw."""
         stats = TeamStats(name="Sweden")
         stats.update(goals_scored=1, goals_conceded=1, result="draw")
-        
+
         assert stats.matches == 1
         assert stats.wins == 0
         assert stats.draws == 1
@@ -108,7 +108,7 @@ class TestTeamStats:
         """Test updating stats for a loss."""
         stats = TeamStats(name="Haiti")
         stats.update(goals_scored=1, goals_conceded=3, result="loss")
-        
+
         assert stats.matches == 1
         assert stats.wins == 0
         assert stats.draws == 0
@@ -121,14 +121,14 @@ class TestTeamStats:
     def test_update_multiple_matches(self):
         """Test updating stats across multiple matches."""
         stats = TeamStats(name="Mexico")
-        
+
         # Win 2:1
         stats.update(goals_scored=2, goals_conceded=1, result="win")
         # Draw 0:0
         stats.update(goals_scored=0, goals_conceded=0, result="draw")
         # Loss 1:3
         stats.update(goals_scored=1, goals_conceded=3, result="loss")
-        
+
         assert stats.matches == 3
         assert stats.wins == 1
         assert stats.draws == 1

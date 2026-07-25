@@ -1,24 +1,24 @@
 """Data models for Group Calculator."""
 
 from dataclasses import dataclass, field
-from typing import Optional
 
 
 @dataclass(frozen=True)
 class Match:
     """Represents a single match between two teams.
-    
+
     Attributes:
         team_a: Name of the first team
         team_b: Name of the second team
         score_a: Goals scored by team_a
         score_b: Goals scored by team_b
     """
+
     team_a: str
     team_b: str
     score_a: int
     score_b: int
-    
+
     def __post_init__(self):
         """Validate that team names are not empty and scores are non-negative."""
         if not self.team_a or not self.team_b:
@@ -30,7 +30,7 @@ class Match:
 @dataclass
 class TeamStats:
     """Statistics for a single team in a group.
-    
+
     Attributes:
         name: Team name
         matches: Total matches played
@@ -42,6 +42,7 @@ class TeamStats:
         goals_against: Total goals conceded
         goal_difference: goals_for - goals_against (computed property)
     """
+
     name: str
     matches: int = 0
     wins: int = 0
@@ -51,14 +52,14 @@ class TeamStats:
     goals_for: int = 0
     goals_against: int = 0
     goal_difference: int = field(init=False, default=0)
-    
+
     def __post_init__(self):
         """Compute goal_difference after initialization."""
         self.goal_difference = self.goals_for - self.goals_against
-    
+
     def update(self, goals_scored: int, goals_conceded: int, result: str) -> None:
         """Update statistics based on a match result.
-        
+
         Args:
             goals_scored: Goals scored by this team in the match
             goals_conceded: Goals conceded by this team in the match
@@ -68,14 +69,16 @@ class TeamStats:
         self.goals_for += goals_scored
         self.goals_against += goals_conceded
         self.goal_difference = self.goals_for - self.goals_against
-        
-        if result == 'win':
+
+        if result == "win":
             self.wins += 1
             self.points += 3
-        elif result == 'draw':
+        elif result == "draw":
             self.draws += 1
             self.points += 1
-        elif result == 'loss':
+        elif result == "loss":
             self.losses += 1
         else:
-            raise ValueError(f"Unknown result: {result}. Must be 'win', 'draw', or 'loss'.")
+            raise ValueError(
+                f"Unknown result: {result}. Must be 'win', 'draw', or 'loss'."
+            )

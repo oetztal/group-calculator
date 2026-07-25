@@ -1,9 +1,7 @@
 """Tests for calculator module."""
 
-import pytest
-
-from group_calculator.models import Match, TeamStats
 from group_calculator.calculator import calculate_stats
+from group_calculator.models import Match
 
 
 class TestCalculateStats:
@@ -13,9 +11,9 @@ class TestCalculateStats:
         """Test calculation for a single win."""
         matches = [Match("A", "B", 2, 1)]
         stats = calculate_stats(matches)
-        
+
         assert len(stats) == 2
-        
+
         team_a = stats["A"]
         assert team_a.matches == 1
         assert team_a.wins == 1
@@ -25,7 +23,7 @@ class TestCalculateStats:
         assert team_a.goals_for == 2
         assert team_a.goals_against == 1
         assert team_a.goal_difference == 1
-        
+
         team_b = stats["B"]
         assert team_b.matches == 1
         assert team_b.wins == 0
@@ -40,7 +38,7 @@ class TestCalculateStats:
         """Test calculation for a single draw."""
         matches = [Match("A", "B", 1, 1)]
         stats = calculate_stats(matches)
-        
+
         team_a = stats["A"]
         assert team_a.matches == 1
         assert team_a.wins == 0
@@ -50,7 +48,7 @@ class TestCalculateStats:
         assert team_a.goals_for == 1
         assert team_a.goals_against == 1
         assert team_a.goal_difference == 0
-        
+
         team_b = stats["B"]
         assert team_b.points == 1
         assert team_b.draws == 1
@@ -65,11 +63,11 @@ class TestCalculateStats:
             Match("Haiti", "Sweden", 2, 1),
             Match("Brazil", "Sweden", 3, 3),
         ]
-        
+
         stats = calculate_stats(matches)
-        
+
         assert len(stats) == 4
-        
+
         # Mexico: 3 matches, 2 wins, 1 draw, 0 losses
         mexico = stats["Mexico"]
         assert mexico.matches == 3
@@ -79,7 +77,7 @@ class TestCalculateStats:
         assert mexico.points == 4  # 3 + 1 + 0
         assert mexico.goals_for == 5  # 4 + 1 + 0
         assert mexico.goals_against == 5  # 3 + 2 + 0
-        
+
         # Brazil: 3 matches, 2 wins, 1 draw
         brazil = stats["Brazil"]
         assert brazil.matches == 3
@@ -87,7 +85,7 @@ class TestCalculateStats:
         assert brazil.draws == 1  # Drew with Sweden 3:3
         assert brazil.losses == 0
         assert brazil.points == 7
-        
+
         # Haiti: 3 matches, 1 win, 0 draws, 2 losses
         # Haiti beat Sweden 2:1, lost to Mexico 3:4 and Brazil 1:4
         haiti = stats["Haiti"]
@@ -98,7 +96,7 @@ class TestCalculateStats:
         assert haiti.points == 3
         assert haiti.goals_for == 6  # 3 + 1 + 2
         assert haiti.goals_against == 9  # 4 + 4 + 1
-        
+
         # Sweden: 3 matches, 0 wins, 2 draws, 1 loss
         # Sweden drew with Mexico 0:0 and Brazil 3:3, lost to Haiti 1:2
         sweden = stats["Sweden"]
@@ -116,9 +114,9 @@ class TestCalculateStats:
             Match("A", "B", 2, 1),
             Match("A", "C", 3, 0),
         ]
-        
+
         stats = calculate_stats(matches)
-        
+
         team_a = stats["A"]
         assert team_a.goals_for == 5  # 2 + 3
         assert team_a.goals_against == 1  # 1 + 0

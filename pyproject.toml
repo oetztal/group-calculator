@@ -36,12 +36,31 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_functions = ["test_*"]
 
-[tool.black]
+[tool.ruff]
+# Ruff configuration
 line-length = 88
+target-version = "py39"
 
-[tool.isort]
-profile = "black"
-known_first_party = ["group_calculator"]
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line too long (handled by black/ruff-format)
+    "B904",  # raise-within-except - optional style
+]
+
+[tool.ruff.format]
+# Use Black-compatible formatting
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
 
 [tool.uv]
 # Use UV for dependency management
@@ -49,10 +68,10 @@ known_first_party = ["group_calculator"]
 [dependency-groups]
 dev = [
     "pytest>=8.0.0",
-    "black>=24.0.0",
-    "isort>=5.13.0",
+    "ruff>=0.6.0",
     "pytest-coverage>=0.0",
     "basedpyright>=1.14.0",
+    "pre-commit>=3.6.0",
 ]
 
 [tool.basedpyright]
