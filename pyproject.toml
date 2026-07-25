@@ -21,6 +21,8 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
 
 [project.scripts]
@@ -28,9 +30,6 @@ wc-group-calculator = "wc_calculator.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/example/worldcup-group-calculator"
-
-[tool.setuptools]
-package-dir = {"" = "src"}
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -43,3 +42,13 @@ line-length = 88
 [tool.isort]
 profile = "black"
 known_first_party = ["wc_calculator"]
+
+[tool.uv]
+# Use UV for dependency management
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "black>=24.0.0",
+    "isort>=5.13.0",
+]

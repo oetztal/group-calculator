@@ -1,1 +1,13 @@
+__pycache__
+
+/.idea
 /.vibe
+
+# UV
+/.venv
+/uv.lock
+/dist
+/build
+*.egg-info
+.pytest_cache
+.__pytest_cache__
