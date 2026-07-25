@@ -2,8 +2,8 @@
 
 import pytest
 
-from wc_calculator.models import Match
-from wc_calculator.validator import validate_group, get_expected_pairs
+from group_calculator.models import Match
+from group_calculator.validator import validate_group, get_expected_pairs
 
 
 class TestValidateGroup:

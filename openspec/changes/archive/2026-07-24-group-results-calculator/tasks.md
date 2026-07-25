@@ -1,6 +1,6 @@
 ## 1. Project Setup
 
-- [x] 1.1 Create project directory structure (src/wc_calculator, tests, examples)
+- [x] 1.1 Create project directory structure (src/group_calculator, tests, examples)
 - [x] 1.2 Create pyproject.toml with project metadata and dependencies
 - [x] 1.3 Create README.md with usage instructions
 - [x] 1.4 Set up test framework (pytest)

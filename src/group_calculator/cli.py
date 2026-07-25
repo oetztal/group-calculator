@@ -1,4 +1,4 @@
-"""Command-line interface for World Cup Group Calculator."""
+"""Command-line interface for Group Calculator."""
 
 import argparse
 import glob
@@ -7,11 +7,11 @@ import sys
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
-from wc_calculator.parser import parse_file
-from wc_calculator.validator import validate_group
-from wc_calculator.calculator import calculate_stats
-from wc_calculator.sorter import sort_teams
-from wc_calculator.formatter import format_group_result, format_to_json, format_all_groups
+from group_calculator.parser import parse_file
+from group_calculator.validator import validate_group
+from group_calculator.calculator import calculate_stats
+from group_calculator.sorter import sort_teams
+from group_calculator.formatter import format_group_result, format_to_json, format_all_groups
 
 
 def process_group_file(filepath: str) -> Dict[str, Any]:
@@ -82,7 +82,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         Exit code (0 for success, 1 for validation errors)
     """
     parser = argparse.ArgumentParser(
-        description="Calculate World Cup group stage results from text files.",
+        description="Calculate group stage results from text files.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:

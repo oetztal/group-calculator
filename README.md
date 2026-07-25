@@ -1,6 +1,6 @@
-# World Cup Group Calculator
+# Group Calculator
 
-Calculate World Cup (or any soccer tournament) group stage results from simple text input files.
+Calculate group stage results from simple text input files.
 
 ## Installation
 
@@ -17,19 +17,19 @@ pip install .
 ### Process a single group file
 
 ```bash
-python -m wc_calculator.cli group_A.txt
+python -m group_calculator.cli group_A.txt
 ```
 
 ### Process all group files in current directory
 
 ```bash
-python -m wc_calculator.cli --all
+python -m group_calculator.cli --all
 ```
 
 ### Save output to file
 
 ```bash
-python -m wc_calculator.cli group_A.txt --output results.json
+python -m group_calculator.cli group_A.txt --output results.json
 ```
 
 ## Input Format

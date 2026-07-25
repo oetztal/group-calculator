@@ -3,14 +3,14 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "worldcup-group-calculator"
+name = "group_calculator"
 version = "0.1.0"
-description = "Calculate World Cup group stage results from text files"
+description = "Calculate group stage results from text files"
 readme = "README.md"
-license = {text = "MIT"}
+license = {text = "Apache2.0"}
 requires-python = ">=3.9"
 authors = [
-    {name = "World Cup Calculator", email = "example@example.com"}
+    {name = "Andreas Wuerl", email = "andreas@wuerl.net"}
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -26,10 +26,10 @@ classifiers = [
 ]
 
 [project.scripts]
-wc-group-calculator = "wc_calculator.cli:main"
+group-calculator = "group_calculator.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/example/worldcup-group-calculator"
+Homepage = "https://github.com/oetztal/group_calculator"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -41,7 +41,7 @@ line-length = 88
 
 [tool.isort]
 profile = "black"
-known_first_party = ["wc_calculator"]
+known_first_party = ["group_calculator"]
 
 [tool.uv]
 # Use UV for dependency management

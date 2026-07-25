@@ -1,8 +1,8 @@
-"""Sort teams according to World Cup ranking rules."""
+"""Sort teams according to ranking rules."""
 
 from typing import List
 
-from wc_calculator.models import TeamStats
+from group_calculator.models import TeamStats
 
 
 def sort_teams(team_stats: List[TeamStats]) -> List[TeamStats]:

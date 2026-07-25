@@ -1,4 +1,4 @@
-"""Data models for World Cup Group Calculator."""
+"""Data models for Group Calculator."""
 
 from dataclasses import dataclass, field
 from typing import Optional

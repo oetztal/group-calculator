@@ -3,7 +3,7 @@
 import json
 from typing import Dict, List, Any
 
-from wc_calculator.models import TeamStats
+from group_calculator.models import TeamStats
 
 
 def format_group_result(

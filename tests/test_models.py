@@ -2,7 +2,7 @@
 
 import pytest
 
-from wc_calculator.models import Match, TeamStats
+from group_calculator.models import Match, TeamStats
 
 
 class TestMatch:

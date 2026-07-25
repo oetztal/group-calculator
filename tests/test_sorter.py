@@ -2,8 +2,8 @@
 
 import pytest
 
-from wc_calculator.models import TeamStats
-from wc_calculator.sorter import sort_teams
+from group_calculator.models import TeamStats
+from group_calculator.sorter import sort_teams
 
 
 class TestSortTeams:

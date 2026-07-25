@@ -5,8 +5,8 @@ from pathlib import Path
 import tempfile
 import os
 
-from wc_calculator.parser import parse_file, parse_score
-from wc_calculator.models import Match
+from group_calculator.parser import parse_file, parse_score
+from group_calculator.models import Match
 
 
 class TestParseFile:

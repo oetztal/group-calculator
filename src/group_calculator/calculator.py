@@ -2,7 +2,7 @@
 
 from typing import Dict, List
 
-from wc_calculator.models import Match, TeamStats
+from group_calculator.models import Match, TeamStats
 
 
 def calculate_stats(matches: List[Match]) -> Dict[str, TeamStats]:

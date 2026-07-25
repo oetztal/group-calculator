@@ -1,4 +1,4 @@
-"""Pytest configuration and fixtures for World Cup Group Calculator."""
+"""Pytest configuration and fixtures for Group Calculator."""
 
 import os
 import pytest

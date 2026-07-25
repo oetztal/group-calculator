@@ -4,7 +4,7 @@ Create a Python CLI tool to calculate and display World Cup group stage results 
 
 ## What Changes
 
-- New Python CLI project `worldcup_group_calculator`
+- New Python CLI project `group_calculator`
 - New command-line interface to process `group_<letter>.txt` files
 - New JSON output format for group standings
 - New validation logic for group integrity
@@ -19,6 +19,6 @@ Create a Python CLI tool to calculate and display World Cup group stage results 
 
 ## Impact
 
-- New directory: `worldcup_group_calculator/` with Python package structure
+- New directory: `group_calculator/` with Python package structure
 - New test suite for validation, parsing, and calculation logic
 - New example fixture files for testing

@@ -3,8 +3,8 @@
 import json
 import pytest
 
-from wc_calculator.models import TeamStats
-from wc_calculator.formatter import (
+from group_calculator.models import TeamStats
+from group_calculator.formatter import (
     format_group_result,
     format_to_json,
     format_all_groups

@@ -3,7 +3,7 @@
 from pathlib import Path
 from typing import List, Tuple
 
-from wc_calculator.models import Match
+from group_calculator.models import Match
 
 
 def parse_file(filepath: str) -> Tuple[List[Match], List[str]]:

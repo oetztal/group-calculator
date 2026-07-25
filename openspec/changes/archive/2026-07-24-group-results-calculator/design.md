@@ -123,11 +123,11 @@ This is a new Python CLI project for calculating World Cup group stage results. 
 ## File Structure
 
 ```
-worldcup_group_calculator/
+group_calculator/
 ├── pyproject.toml
 ├── README.md
 ├── src/
-│   └── wc_calculator/
+│   └── group_calculator/
 │       ├── __init__.py
 │       ├── models.py           # Match, TeamStats dataclasses
 │       ├── parser.py           # File parsing logic

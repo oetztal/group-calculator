@@ -2,8 +2,8 @@
 
 import pytest
 
-from wc_calculator.models import Match, TeamStats
-from wc_calculator.calculator import calculate_stats
+from group_calculator.models import Match, TeamStats
+from group_calculator.calculator import calculate_stats
 
 
 class TestCalculateStats:

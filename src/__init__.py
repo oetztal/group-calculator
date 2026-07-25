@@ -1,1 +1,1 @@
-"""World Cup Group Calculator - Source package."""
+"""Group Calculator - Source package."""

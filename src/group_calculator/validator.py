@@ -2,7 +2,7 @@
 
 from typing import List, Tuple, Set
 
-from wc_calculator.models import Match
+from group_calculator.models import Match
 
 
 def validate_group(matches: List[Match]) -> Tuple[bool, List[str]]:

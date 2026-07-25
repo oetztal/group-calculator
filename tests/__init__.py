@@ -1,1 +1,1 @@
-"""Tests for World Cup Group Calculator."""
+"""Tests for Group Calculator."""

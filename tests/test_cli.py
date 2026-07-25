@@ -5,7 +5,7 @@ import pytest
 import sys
 from pathlib import Path
 
-from wc_calculator.cli import main, process_group_file, process_all_groups
+from group_calculator.cli import main, process_group_file, process_all_groups
 
 
 class TestProcessGroupFile:
