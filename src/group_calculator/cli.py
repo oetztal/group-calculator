@@ -115,6 +115,7 @@ Examples:
     args = parser.parse_args(argv)
     
     # Determine what to process
+    results: List[Dict[str, Any]] = []
     if args.all:
         if args.group_file:
             print("Error: Cannot specify both --all and a group file.", file=sys.stderr)

@@ -52,4 +52,10 @@ dev = [
     "black>=24.0.0",
     "isort>=5.13.0",
     "pytest-coverage>=0.0",
+    "basedpyright>=1.14.0",
 ]
+
+[tool.basedpyright]
+# Type checking configuration
+pythonVersion = "3.9"
+typeCheckingMode = "standard"
